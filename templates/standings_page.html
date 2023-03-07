@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Standings</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+  </head>
+  <body>
+    <div class="image-and-text-container">
+      <img src="static/nba-logo.png" height=40 alt="NBA logo">
+      <div class="text">
+        <h1>NBA Standings</h1>
+      </div>
+    </div>
+    <main>
+      <table class='standings-table' style='max-width: 800px;'>
+        <caption style="font-size:1.35em;">Eastern Conference Standings</caption>
+        <thead>
+          <tr>
+            <th>Rk</th>
+            <th>Team</th>
+            <th>W</th>
+            <th>L</th>
+            <th>W/L%</th>
+            <th>GB</th>
+            <th>PS/G</th>
+            <th>PA/G</th>
+            <th>SRS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for index, row in east_standings.iterrows() %}
+          <tr>
+            <td>{{ row['Rk'] }}</td>
+            <td>{{ row['Team'] }}</td>
+            <td>{{ row['W'] }}</td>
+            <td>{{ row['L'] }}</td>
+            <td>{{ row['W/L%'] }}</td>
+            <td>{{ row['GB'] }}</td>
+            <td>{{ row['PS/G'] }}</td>
+            <td>{{ row['PA/G'] }}</td>
+            <td>{{ row['SRS'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br><br>
+      <table class='standings-table' style='max-width: 800px;'>
+        <caption style="font-size:1.35em">Western Conference Standings</caption>
+        <thead>
+          <tr>
+            <th>Rk</th>
+            <th>Team</th>
+            <th>W</th>
+            <th>L</th>
+            <th>W/L%</th>
+            <th>GB</th>
+            <th>PS/G</th>
+            <th>PA/G</th>
+            <th>SRS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for index, row in west_standings.iterrows() %}
+          <tr>
+            <td>{{ row['Rk'] }}</td>
+            <td>{{ row['Team'] }}</td>
+            <td>{{ row['W'] }}</td>
+            <td>{{ row['L'] }}</td>
+            <td>{{ row['W/L%'] }}</td>
+            <td>{{ row['GB'] }}</td>
+            <td>{{ row['PS/G'] }}</td>
+            <td>{{ row['PA/G'] }}</td>
+            <td>{{ row['SRS'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <footer>
+            Created by Peter Martens
+      </footer>
+    </main>
+    <script>
+     $(document).ready(function () {
+        $('.standings-table').DataTable({
+            "ordering": true,
+            "paging": false,
+            "searching": false,
+            "info": false,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+    </script>
+  </body>
+</html>
