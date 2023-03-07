@@ -9,3 +9,4 @@ Upon a user's request to view the standings, the application retrieves the cache
 Overall, this project showcases how Python and Flask can be used to create a web application that provides real-time NBA standings, highlighting key features such as web scraping, caching, and data visualization.
 
 ## Example Output:
+![image](https://user-images.githubusercontent.com/87671757/223555325-cc3121a2-07cb-4efc-b77c-9ae3c4e673a8.png)
